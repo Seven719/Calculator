@@ -25,7 +25,6 @@ currentOperation.id = 'current-operation';
 currentOperation.textContent = '0';
 screenContainer.appendChild(lastOperation);
 screenContainer.appendChild(currentOperation);
-currentOperation.textContent = '';
 
 const buttonDelete = document.createElement('button');
 const buttonClear = document.createElement('button');
@@ -56,10 +55,12 @@ let numbersList = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
 
 [...document.querySelectorAll('.buttons')].forEach(function(theButton) {
     theButton.addEventListener('click', function() {
-        if(theButton.textContent in numbersList) {
-            currentOperation.textContent += (theButton.textContent);
+        if(currentOperation.textContent == '0') {
+            currentOperation.textContent = '';
             screenContainer.appendChild(currentOperation);
         }
+        currentOperation.textContent += (theButton.textContent);
+        screenContainer.appendChild(currentOperation);
     });
 });
 
