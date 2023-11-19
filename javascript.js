@@ -4,15 +4,12 @@ function performCalculation(operator, firstNumber, secondNumber) {
 		    return firstNumber + secondNumber;
 		case '-':
 		    return firstNumber - secondNumber;
-		case '*':
+		case 'x':
 		    return firstNumber * secondNumber;
-		case '/':
+		case '÷':
 		    return firstNumber / secondNumber;
 	}
 }
-console.log(performCalculation('/', 6, 2));
-
-let firstNumber, secondNumber, operator;
 
 const buttonContainer = document.querySelector('#button-container');
 const screenContainer = document.querySelector('#screen');
@@ -52,6 +49,10 @@ for(let i = buttonList.length - 1; i >= 0; i--) {
 }
 
 let numbersList = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
+let firstNumberList = [];
+let secondNumberList = [];
+let operatorList = ['+', '-', '÷', 'x'];
+let operator = null;
 
 [...document.querySelectorAll('.buttons')].forEach(function(theButton) {
     theButton.addEventListener('click', function() {
@@ -59,10 +60,22 @@ let numbersList = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
             currentOperation.textContent = '';
             screenContainer.appendChild(currentOperation);
         }
-        currentOperation.textContent += (theButton.textContent);
+        currentOperation.textContent += theButton.textContent;
+        if(operatorList.includes(theButton.textContent)) {
+            operator = theButton.textContent;
+        }
+        else if(operator == null) {
+            firstNumberList.push(theButton.textContent);
+        }
+        else {
+            secondNumberList.push(theButton.textContent);
+        }
         screenContainer.appendChild(currentOperation);
     });
 });
+
+let firstNumber = Number(firstNumberList.join(''));
+let secondNumber = Number(secondNumberList.join(''));
 
 buttonClear.addEventListener('click', function() {
     currentOperation.textContent = '0';
