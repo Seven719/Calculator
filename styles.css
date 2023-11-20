@@ -61,6 +61,7 @@ button:active {
 #current-operation {
     text-align: right;
     padding: 10px 20px;
+
 }
 
 #last-operation {
@@ -71,5 +72,4 @@ button:active {
 #current-operation {
     font-size: 40px;
     min-height: 70px;
-    justify-content: center;
 }
