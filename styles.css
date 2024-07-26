@@ -17,9 +17,6 @@ body {
     border-radius: 10px;
 }
 
-#button-container {
-}
-
 .top-button {
     width: 162px;
 }
@@ -61,7 +58,6 @@ button:active {
 #current-operation {
     text-align: right;
     padding: 10px 20px;
-
 }
 
 #last-operation {
